@@ -35,7 +35,7 @@ public final class ArmorStandFreeze extends JavaPlugin implements Listener {
 
 			amountInChunk++;
 			
-			if (amountInChunk > 64) {
+			if (amountInChunk > 20) {
 				((ArmorStand) entity).setCanMove(false);
 			}
 		}
