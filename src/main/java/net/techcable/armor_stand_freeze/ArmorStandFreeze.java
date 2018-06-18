@@ -24,16 +24,18 @@ public final class ArmorStandFreeze extends JavaPlugin implements Listener {
 	public void onEntityAdd(EntityAddToWorldEvent event) {
 		Entity entity = event.getEntity();
 		
+		if (!(entity instanceof ArmorStand)) {
+			return;
+		}
+		
 		Chunk chunk = entity.getLocation().getChunk();
 		
 		int amountInChunk = 0;
 		
 		for (Entity entityInChunk : chunk.getEntities()) {
-			if (!(entityInChunk instanceof ArmorStand)) {
-				continue;
+			if (entityInChunk instanceof ArmorStand) {
+				amountInChunk++;
 			}
-
-			amountInChunk++;
 			
 			if (amountInChunk > 20) {
 				((ArmorStand) entity).setCanMove(false);
